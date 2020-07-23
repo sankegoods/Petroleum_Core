@@ -1,0 +1,12 @@
+C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\bin\Debug\netstandard2.0\PetroleumService.deps.json
+C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\bin\Debug\netstandard2.0\PetroleumService.dll
+C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\bin\Debug\netstandard2.0\PetroleumService.pdb
+C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\bin\Debug\netstandard2.0\PetroleumModel.dll
+C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\bin\Debug\netstandard2.0\PetroleumModel.pdb
+C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\obj\Debug\netstandard2.0\PetroleumService.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\obj\Debug\netstandard2.0\PetroleumService.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\obj\Debug\netstandard2.0\PetroleumService.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\obj\Debug\netstandard2.0\PetroleumService.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\obj\Debug\netstandard2.0\PetroleumService.csproj.CopyComplete
+C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\obj\Debug\netstandard2.0\PetroleumService.dll
+C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\obj\Debug\netstandard2.0\PetroleumService.pdb

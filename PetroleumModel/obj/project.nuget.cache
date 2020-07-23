@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "bc8Rfz+0Pyen2UJfGD3H5KQgL60+a0CfMYZoxvWToHuSdRkKbTGiDLT1zg3oX8KmoCliI9uvidnPwz3vtguvcQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\vue\\后端\\Petroleum_Core\\PetroleumModel\\PetroleumModel.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
