@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PetroleumModel;
 using PetroleumModel.Model;
+using PetroleumService.IService;
 using Repository;
+using Repository.IResposit;
 
 namespace PetroleumCore.Controllers
 {
@@ -14,17 +16,17 @@ namespace PetroleumCore.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
-        private readonly PetroleumDbContext _dbContext;
+        private readonly IJobService _jobService;
 
-        public HomeController(Repository.PetroleumDbContext dbContext)
+        public HomeController(IJobService jobService)
         {
-            _dbContext = dbContext;
+            _jobService = jobService;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Job>> GetJob()
         {
-            var job = _dbContext.Set<Job>().Where(x => x.Id >= 0);
+            var job = _jobService.FindAll().ToList();
             return Ok(job);
         }
     }

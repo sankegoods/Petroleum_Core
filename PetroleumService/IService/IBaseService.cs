@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlSugar;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,5 +7,6 @@ namespace PetroleumService.IService
 {
     public interface IBaseService<T> where T : class
     {
+        IEnumerable<T> FindAll();
     }
 }

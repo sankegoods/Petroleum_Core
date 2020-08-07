@@ -13,9 +13,9 @@ namespace PetroleumService.Service
     public class BasesService<T> : IBaseService<T> where T : class, new()
     {
         protected IBasesResposity<T> _baseRepository { get; set; }
-        public ISugarQueryable<T> getList()
+        public IEnumerable<T> FindAll()
         {
-            return _baseRepository.GetAll();
+            return _baseRepository.FindAll();
         }
 
         /// <summary>

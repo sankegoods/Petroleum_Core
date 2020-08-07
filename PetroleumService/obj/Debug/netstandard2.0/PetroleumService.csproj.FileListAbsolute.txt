@@ -10,3 +10,7 @@ C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\obj\De
 C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\obj\Debug\netstandard2.0\PetroleumService.csproj.CopyComplete
 C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\obj\Debug\netstandard2.0\PetroleumService.dll
 C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\obj\Debug\netstandard2.0\PetroleumService.pdb
+C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\bin\Debug\netstandard2.0\Repository.dll
+C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\bin\Debug\netstandard2.0\ServiceExt.dll
+C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\bin\Debug\netstandard2.0\Repository.pdb
+C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumService\bin\Debug\netstandard2.0\ServiceExt.pdb

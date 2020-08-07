@@ -13,7 +13,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using PetroleumService.IService;
+using PetroleumService.Service;
 using Repository;
+using Repository.IResposit;
+using Repository.Resposit;
 using ServiceExt;
 
 namespace PetroleumCore
