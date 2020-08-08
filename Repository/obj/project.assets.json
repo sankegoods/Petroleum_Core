@@ -1834,41 +1834,40 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
-    "E:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\95329\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\vue\\后端\\Petroleum_Core\\Repository\\Repository.csproj",
+      "projectUniqueName": "C:\\Users\\95329\\Desktop\\石油项目翻新\\Petroleum_Core\\Repository\\Repository.csproj",
       "projectName": "Repository",
-      "projectPath": "C:\\Users\\Administrator\\Desktop\\vue\\后端\\Petroleum_Core\\Repository\\Repository.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\Desktop\\vue\\后端\\Petroleum_Core\\Repository\\obj\\",
+      "projectPath": "C:\\Users\\95329\\Desktop\\石油项目翻新\\Petroleum_Core\\Repository\\Repository.csproj",
+      "packagesPath": "C:\\Users\\95329\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\95329\\Desktop\\石油项目翻新\\Petroleum_Core\\Repository\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "E:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\95329\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://www.nuget.org/api/v2/": {}
       },
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\Administrator\\Desktop\\vue\\后端\\Petroleum_Core\\PetroleumModel\\PetroleumModel.csproj": {
-              "projectPath": "C:\\Users\\Administrator\\Desktop\\vue\\后端\\Petroleum_Core\\PetroleumModel\\PetroleumModel.csproj"
+            "C:\\Users\\95329\\Desktop\\石油项目翻新\\Petroleum_Core\\PetroleumModel\\PetroleumModel.csproj": {
+              "projectPath": "C:\\Users\\95329\\Desktop\\石油项目翻新\\Petroleum_Core\\PetroleumModel\\PetroleumModel.csproj"
             },
-            "C:\\Users\\Administrator\\Desktop\\vue\\后端\\Petroleum_Core\\ServiceExt\\ServiceExt.csproj": {
-              "projectPath": "C:\\Users\\Administrator\\Desktop\\vue\\后端\\Petroleum_Core\\ServiceExt\\ServiceExt.csproj"
+            "C:\\Users\\95329\\Desktop\\石油项目翻新\\Petroleum_Core\\ServiceExt\\ServiceExt.csproj": {
+              "projectPath": "C:\\Users\\95329\\Desktop\\石油项目翻新\\Petroleum_Core\\ServiceExt\\ServiceExt.csproj"
             }
           }
         }
@@ -1915,7 +1914,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
       }
     }
   },

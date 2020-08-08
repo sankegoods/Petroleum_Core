@@ -12,3 +12,16 @@ C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\Repository\obj\Debug\ne
 C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\Repository\bin\Debug\netstandard2.0\ServiceExt.dll
 C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\Repository\bin\Debug\netstandard2.0\ServiceExt.pdb
 C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\Repository\obj\Debug\netstandard2.0\Repository.csproj.CoreCompileInputs.cache
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\Repository\bin\Debug\netstandard2.0\Repository.deps.json
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\Repository\bin\Debug\netstandard2.0\Repository.dll
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\Repository\bin\Debug\netstandard2.0\Repository.pdb
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\Repository\bin\Debug\netstandard2.0\PetroleumModel.dll
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\Repository\bin\Debug\netstandard2.0\ServiceExt.dll
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\Repository\bin\Debug\netstandard2.0\PetroleumModel.pdb
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\Repository\bin\Debug\netstandard2.0\ServiceExt.pdb
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\Repository\obj\Debug\netstandard2.0\Repository.csprojAssemblyReference.cache
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\Repository\obj\Debug\netstandard2.0\Repository.AssemblyInfoInputs.cache
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\Repository\obj\Debug\netstandard2.0\Repository.AssemblyInfo.cs
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\Repository\obj\Debug\netstandard2.0\Repository.csproj.CopyComplete
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\Repository\obj\Debug\netstandard2.0\Repository.dll
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\Repository\obj\Debug\netstandard2.0\Repository.pdb

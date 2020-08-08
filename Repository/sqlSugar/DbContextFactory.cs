@@ -18,7 +18,7 @@ namespace Repository
         {
             SqlSugarClient db = new SqlSugarClient(new ConnectionConfig()
             {
-                ConnectionString = "server=.;uid=sa;pwd=FEEg32f2F2110;database=Petroleum",// "server=.;uid=sa;pwd=@jhl85661501;database=SqlSugar4XTest",
+                ConnectionString = connString,// "server=.;uid=sa;pwd=@jhl85661501;database=SqlSugar4XTest",
                 DbType = DbType.SqlServer,
                 IsAutoCloseConnection = true,//开启自动释放模式和EF原理一样我就不多解释了
                 InitKeyType = InitKeyType.Attribute,//从特性读取主键和自增列信息

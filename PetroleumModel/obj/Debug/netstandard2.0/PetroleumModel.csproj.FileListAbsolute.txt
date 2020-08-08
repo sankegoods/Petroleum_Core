@@ -6,3 +6,11 @@ C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumModel\obj\Debu
 C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumModel\obj\Debug\netstandard2.0\PetroleumModel.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumModel\obj\Debug\netstandard2.0\PetroleumModel.dll
 C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\PetroleumModel\obj\Debug\netstandard2.0\PetroleumModel.pdb
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\PetroleumModel\bin\Debug\netstandard2.0\PetroleumModel.deps.json
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\PetroleumModel\bin\Debug\netstandard2.0\PetroleumModel.dll
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\PetroleumModel\bin\Debug\netstandard2.0\PetroleumModel.pdb
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\PetroleumModel\obj\Debug\netstandard2.0\PetroleumModel.csprojAssemblyReference.cache
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\PetroleumModel\obj\Debug\netstandard2.0\PetroleumModel.AssemblyInfoInputs.cache
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\PetroleumModel\obj\Debug\netstandard2.0\PetroleumModel.AssemblyInfo.cs
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\PetroleumModel\obj\Debug\netstandard2.0\PetroleumModel.dll
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\PetroleumModel\obj\Debug\netstandard2.0\PetroleumModel.pdb
