@@ -1,11 +1,11 @@
-﻿using Repository.Resposit;
+﻿using PetroleumModel.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Repository.IResposit
 {
-    public interface IActions : IBasesResposity<PetroleumModel.Model.Actions>
+    public interface IApproverResposit :IBasesResposity<Approver>
     {
     }
 }

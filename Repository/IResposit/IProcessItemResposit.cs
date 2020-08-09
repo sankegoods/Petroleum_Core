@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PetroleumService.IService
+namespace Repository.IResposit
 {
-    public interface IJobService : IBaseService<Job>
+    public interface IProcessItemResposit : IBasesResposity<OrganizationStructure>
     {
     }
 }

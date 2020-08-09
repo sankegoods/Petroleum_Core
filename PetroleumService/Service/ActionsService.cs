@@ -7,11 +7,11 @@ using System.Text;
 
 namespace PetroleumService.Service
 {
-    public class JobService : BasesService<Job>, IJobService
+    public class ActionsService: BasesService<Actions>, IActionsService
     {
-        public JobService(IJobresposit jobresposit)
+        public ActionsService(IActionsResposit actionsService)
         {
-            _baseRepository = jobresposit;
+            _baseRepository = actionsService;
         }
     }
 }

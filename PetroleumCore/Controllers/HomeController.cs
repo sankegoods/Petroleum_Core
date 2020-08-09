@@ -16,17 +16,29 @@ namespace PetroleumCore.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
+
         private readonly IJobService _jobService;
+        private readonly IActionsResposit _actionsResposit;
 
-        public HomeController(IJobService jobService)
+        #region 仓储
+        public HomeController(
+            IJobService jobService,
+            IActionsResposit actionsResposit
+            )
         {
-            _jobService = jobService;
+            _jobService = jobService ?? throw new ArgumentNullException(nameof(jobService));
+            _actionsResposit = actionsResposit ?? throw new ArgumentNullException(nameof(actionsResposit));
         }
+        #endregion
 
+        /// <summary>
+        /// 菜单渲染
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        public ActionResult<IEnumerable<Job>> GetJob()
+        public ActionResult<IEnumerable<Actions>> GetMenuInfo()
         {
-            var job = _jobService.FindAll().ToList();
+            var job = _actionsResposit.FindAll();
             return Ok(job);
         }
     }

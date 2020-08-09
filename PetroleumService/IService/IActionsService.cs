@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PetroleumService.IService
 {
-    public interface IJobService : IBaseService<Job>
+    public interface IActionsService: IBaseService<Actions>
     {
     }
 }
