@@ -62,7 +62,7 @@ namespace PetroleumCore
 
 
             #region  π”√øÁ”Ú
-            app.UseCors("Cors");
+            app.UseCors("cors");
             #endregion
 
             app.UseRouting();

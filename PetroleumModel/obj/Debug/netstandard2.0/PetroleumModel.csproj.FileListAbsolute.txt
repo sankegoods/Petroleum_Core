@@ -13,3 +13,4 @@ C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\PetroleumModel\obj\Debu
 C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\PetroleumModel\obj\Debug\netstandard2.0\PetroleumModel.AssemblyInfo.cs
 C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\PetroleumModel\obj\Debug\netstandard2.0\PetroleumModel.dll
 C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\PetroleumModel\obj\Debug\netstandard2.0\PetroleumModel.pdb
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\PetroleumModel\obj\Debug\netstandard2.0\PetroleumModel.csprojAssemblyReference.cache

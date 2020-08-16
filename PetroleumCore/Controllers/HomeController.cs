@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PetroleumModel;
@@ -18,12 +19,12 @@ namespace PetroleumCore.Controllers
     {
 
         private readonly IJobService _jobService;
-        private readonly IActionsResposit _actionsResposit;
+        private readonly IActionsService _actionsResposit;
 
         #region 仓储
         public HomeController(
             IJobService jobService,
-            IActionsResposit actionsResposit
+            IActionsService actionsResposit
             )
         {
             _jobService = jobService ?? throw new ArgumentNullException(nameof(jobService));
@@ -35,10 +36,10 @@ namespace PetroleumCore.Controllers
         /// 菜单渲染
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("GetMenuInfo")]
         public ActionResult<IEnumerable<Actions>> GetMenuInfo()
         {
-            var job = _actionsResposit.FindAll();
+            var job = _actionsResposit.MenusInfoAll();
             return Ok(job);
         }
     }

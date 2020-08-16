@@ -7,5 +7,6 @@ namespace PetroleumService.IService
 {
     public interface IActionsService: IBaseService<Actions>
     {
+        object MenusInfoAll();
     }
 }
