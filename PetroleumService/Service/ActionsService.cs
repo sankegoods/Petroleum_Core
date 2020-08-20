@@ -27,9 +27,11 @@ namespace PetroleumService.Service
 
             var temp1 = (from m in _actionsService.FindAll()
                          where m.NonMenu == 1
+                         orderby m.Mnusort
                          select m).ToList();
 
             List<Actions_modes> list = new List<Actions_modes>();
+            //temp1.GroupBy(x => x.Mnusort);
             foreach (var item in temp)
             {
                 List<Actions> listActions = new List<Actions>();

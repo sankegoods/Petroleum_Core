@@ -37,9 +37,9 @@ namespace PetroleumCore.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetMenuInfo")]
-        public ActionResult<IEnumerable<Actions>> GetMenuInfo()
+        public async Task<ActionResult<IEnumerable<Actions>>> GetMenuInfo()
         {
-            var job = _actionsResposit.MenusInfoAll();
+            var job = await Task.Factory.StartNew(() => _actionsResposit.MenusInfoAll());
             return Ok(job);
         }
     }

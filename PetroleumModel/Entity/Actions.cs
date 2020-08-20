@@ -15,6 +15,7 @@ namespace PetroleumModel.Model
 		private string _url;
 		private int? _nametype;
 		private int? _nonmenu;
+		private int? _mnusort;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -55,6 +56,8 @@ namespace PetroleumModel.Model
 			set{ _nonmenu=value;}
 			get{return _nonmenu;}
 		}
+
+		public int? Mnusort { get => _mnusort; set => _mnusort = value; }
 		#endregion Model
 
 	}
