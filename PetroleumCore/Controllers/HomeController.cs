@@ -42,5 +42,15 @@ namespace PetroleumCore.Controllers
             var job = await Task.Factory.StartNew(() => _actionsResposit.MenusInfoAll());
             return Ok(job);
         }
+        /// <summary>
+        /// 登陆
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("login")]
+        public async Task<ActionResult<IEnumerable<Staff>>> logig(string Name,string Passwords)
+        {
+            string n = Name;
+            return Ok();
+        }
     }
 }
