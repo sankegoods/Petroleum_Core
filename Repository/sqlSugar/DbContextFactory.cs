@@ -21,7 +21,7 @@ namespace Repository
                 ConnectionString = connString,// "server=.;uid=sa;pwd=@jhl85661501;database=SqlSugar4XTest",
                 DbType = DbType.SqlServer,
                 IsAutoCloseConnection = true,//开启自动释放模式和EF原理一样我就不多解释了
-                InitKeyType = InitKeyType.Attribute,//从特性读取主键和自增列信息
+                //InitKeyType = InitKeyType.Attribute,//从特性读取主键和自增列信息
                 IsShardSameThread = true
                 //SlaveConnectionConfigs = new List<SlaveConnectionConfig>() {//从连接
                 //     new SlaveConnectionConfig() { HitRate=10, ConnectionString=slaveconnString }

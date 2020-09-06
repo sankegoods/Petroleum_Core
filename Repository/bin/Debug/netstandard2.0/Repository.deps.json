@@ -451,6 +451,9 @@
         }
       },
       "PetroleumModel/1.0.0": {
+        "dependencies": {
+          "sqlSugar": "5.0.0.15"
+        },
         "runtime": {
           "PetroleumModel.dll": {}
         }

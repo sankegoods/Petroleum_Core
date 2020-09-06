@@ -59,5 +59,64 @@ namespace Repository.Resposit
         {
             return _db.Queryable<T>();
         }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        [Obsolete]
+        public int UpdateInfo(Expression<Func<T, T>> predicate, Expression<Func<T, bool>> predicate1)
+        {
+            return _db.Updateable<T>().UpdateColumns(predicate).Where(predicate1).With(SqlWith.UpdLock).ExecuteCommand();
+        }
+
+        /// <summary>
+        /// 单个删除
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public int DeleteInfo(Expression<Func<T, bool>> predicate)
+        {
+            return _db.Deleteable<T>().Where(predicate).With(SqlWith.RowLock).ExecuteCommand();
+        }
+
+        /// <summary>
+        /// 添加数据(返回受影响行数)
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public int AddInfo(T t)
+        {
+            return _db.Insertable(t).With(SqlWith.UpdLock).ExecuteCommand();
+        }
+        /// <summary>
+        /// 添加数据(返回插入的自增长列)
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public int AddCreateInfo(T t)
+        {
+            return _db.Insertable(t).With(SqlWith.UpdLock).ExecuteReturnIdentity();
+        }
+
+        /// <summary>
+        /// 事务
+        /// </summary>
+        /// <param name="action"></param>
+        public void StatrAffair(Action action)
+        {
+            try
+            {
+                _db.Ado.BeginTran();
+                action();
+                _db.Ado.CommitTran();
+            }
+            catch (Exception ex)
+            {
+                _db.Ado.RollbackTran();
+                throw ex;
+            }
+        }
     }
 }

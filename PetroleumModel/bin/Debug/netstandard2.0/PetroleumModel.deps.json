@@ -9,7 +9,8 @@
     ".NETStandard,Version=v2.0/": {
       "PetroleumModel/1.0.0": {
         "dependencies": {
-          "NETStandard.Library": "2.0.3"
+          "NETStandard.Library": "2.0.3",
+          "sqlSugar": "5.0.0.15"
         },
         "runtime": {
           "PetroleumModel.dll": {}
@@ -19,6 +20,14 @@
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "sqlSugar/5.0.0.15": {
+        "runtime": {
+          "lib/SqlSugar.dll": {
+            "assemblyVersion": "5.0.0.15",
+            "fileVersion": "5.0.0.15"
+          }
         }
       }
     }
@@ -42,6 +51,13 @@
       "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "sqlSugar/5.0.0.15": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EBYIw96X/liADdMslKebn3Xd6Ey1A9yREJazZqassiRcg6xAYOdhUpmjOG4Vf9Rv4dGT8DT4dUW7ZGuzzx7x+g==",
+      "path": "sqlsugar/5.0.0.15",
+      "hashPath": "sqlsugar.5.0.0.15.nupkg.sha512"
     }
   }
 }

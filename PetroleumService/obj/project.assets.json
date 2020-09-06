@@ -560,6 +560,9 @@
       "PetroleumModel/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "sqlSugar": "5.0.0.15"
+        },
         "compile": {
           "bin/placeholder/PetroleumModel.dll": {}
         },
