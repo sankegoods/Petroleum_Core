@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlSugar;
+using System;
 namespace PetroleumModel.Model
 {
 	/// <summary>
@@ -14,7 +15,7 @@ namespace PetroleumModel.Model
 		private string _non;
 		private string _name;
 		private string _sex;
-		private DateTime? _birthday;
+		private string _birthday;
 		private string _nativeplace;
 		private string _addressd;
 		private string _passwords;
@@ -31,6 +32,7 @@ namespace PetroleumModel.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		[SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
 		public int Id
 		{
 			set{ _id=value;}
@@ -63,7 +65,7 @@ namespace PetroleumModel.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? BirthDay
+		public string BirthDay
 		{
 			set{ _birthday=value;}
 			get{return _birthday;}

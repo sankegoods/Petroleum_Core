@@ -8,5 +8,6 @@ namespace Repository.Resposit
 {
     public class EntrysResposit : BasesResposity<Entrys>, IEntrysResposit
     {
+        
     }
 }

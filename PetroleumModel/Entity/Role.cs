@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlSugar;
+using System;
 namespace PetroleumModel.Model
 {
 	/// <summary>
@@ -16,6 +17,7 @@ namespace PetroleumModel.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		[SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
 		public int Id
 		{
 			set{ _id=value;}

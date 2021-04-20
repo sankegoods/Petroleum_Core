@@ -42,5 +42,35 @@ namespace ServiceExt
 
             return time;
         }
+
+        /// <summary>
+        /// 随机生成
+        /// </summary>
+        /// <returns></returns>
+        public static string randomPwd()
+        {
+            string pwd = string.Empty;
+            List<char> list = new List<char>();
+            Random rd = new Random();
+
+            for (int i = 65; i < 91; i++)
+            {
+                list.Add((char)i);
+            }
+            for (int j = 97; j < 123; j++)
+            {
+                list.Add((char)j);
+
+            }
+            for (int k = 0; k < 9; k++)
+            {
+                list.Add(char.Parse(k.ToString()));
+            }
+            for (int u = 0; u < 6; u++)
+            {
+                pwd += list[rd.Next(61)];
+            }
+            return pwd;
+        }
     }
 }

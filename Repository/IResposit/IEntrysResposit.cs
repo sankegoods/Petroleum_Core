@@ -7,5 +7,6 @@ namespace Repository.IResposit
 {
     public interface IEntrysResposit : IBasesResposity<Entrys>
     {
+        
     }
 }

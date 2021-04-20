@@ -13,7 +13,7 @@ namespace PetroleumModel.Model
 		private int _id;
 		private string _staffname;
 		private int? _sex;
-		private DateTime? _birthday;
+		private string _birthday;
 		private int? _maritalstatus;
 		private decimal? _height;
 		private int? _highesteducation;
@@ -126,7 +126,7 @@ namespace PetroleumModel.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime? BirthDay
+		public string BirthDay
 		{
 			set{ _birthday=value;}
 			get{return _birthday;}

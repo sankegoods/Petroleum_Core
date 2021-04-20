@@ -26,12 +26,12 @@ namespace Repository.Resposit
         }
 
         /// <summary>
-        /// 分页查询
+        /// 分页查询(单表)
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<T> FindPageAll(Expression<Func<T, bool>> predicate, int pageIndex, int pageSize, ref int totalCount, string orderBy = "")
+        public IEnumerable<T> FindPageAll(int pageIndex, int pageSize, ref int totalCount, string orderBy = "")
         {
-            var query = _db.Queryable<T>().Where(predicate);
+            var query = _db.Queryable<T>();
             if (!string.IsNullOrEmpty(orderBy))
             {
                 query = query.OrderBy(orderBy);
@@ -39,6 +39,10 @@ namespace Repository.Resposit
             return query.ToPageList(pageIndex, pageSize, ref totalCount);
         }
 
+        public SqlSugarClient FindPageLianbiao()
+        {
+            return _db;
+        }
         /// <summary>
         /// 根据条件查询数据
         /// </summary>
@@ -69,6 +73,16 @@ namespace Repository.Resposit
         public int UpdateInfo(Expression<Func<T, T>> predicate, Expression<Func<T, bool>> predicate1)
         {
             return _db.Updateable<T>().UpdateColumns(predicate).Where(predicate1).With(SqlWith.UpdLock).ExecuteCommand();
+        }
+        /// <summary>
+        /// 修改(批量)
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        [Obsolete]
+        public int Updateable(List<T> list, Expression<Func<T, T>> predicate)
+        {
+            return _db.Updateable(list).UpdateColumns(predicate).With(SqlWith.UpdLock).ExecuteCommand();
         }
 
         /// <summary>
@@ -101,7 +115,7 @@ namespace Repository.Resposit
         }
 
         /// <summary>
-        /// 事务
+        /// 单库事务
         /// </summary>
         /// <param name="action"></param>
         public void StatrAffair(Action action)
@@ -111,11 +125,28 @@ namespace Repository.Resposit
                 _db.Ado.BeginTran();
                 action();
                 _db.Ado.CommitTran();
+                _db.Ado.Close();
             }
             catch (Exception ex)
             {
                 _db.Ado.RollbackTran();
                 throw ex;
+            }
+        }
+    
+        
+        public void StatrAffairs(Action action)
+        {
+            try
+            {
+                _db.BeginTran();
+                action();
+                _db.CommitTran();
+            }
+            catch (Exception)
+            {
+                _db.RollbackTran();
+                throw;
             }
         }
     }

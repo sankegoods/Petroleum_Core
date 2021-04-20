@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlSugar;
+using System;
 namespace PetroleumModel.Model
 {
 	/// <summary>
@@ -15,6 +16,7 @@ namespace PetroleumModel.Model
 		/// <summary>
 		/// 
 		/// </summary>
+		[SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
 		public Guid RoleId
 		{
 			set{ _roleid=value;}

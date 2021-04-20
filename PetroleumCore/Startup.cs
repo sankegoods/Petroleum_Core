@@ -38,6 +38,7 @@ namespace PetroleumCore
             {
                 option.UseSqlServer(Appsettings.GetSectionValue("ConnectionString:Entities"));
             });
+
             #region ÅäÖÃ¿çÓò
             services.AddCors(options => options.AddPolicy("cors", bulider =>
                     bulider.WithOrigins(Appsettings.GetSectionValue("AppSettings:CorsIPs").Split(','))

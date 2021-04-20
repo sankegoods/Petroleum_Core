@@ -25,6 +25,7 @@ namespace PetroleumCore.Controllers
             _oilMaterialOrderService = oilMaterialOrderService ?? throw new ArgumentNullException(nameof(oilMaterialOrderService));
         }
 
+        #region 油料申请
         /// <summary>
         /// 获取油料订单数据
         /// </summary>
@@ -47,7 +48,6 @@ namespace PetroleumCore.Controllers
             string rem = string.Empty;
             bool temp = await Task.Factory.StartNew(() => _oilMaterialOrderService.AddOilMatOrder(oilMaterialOrderDto, ref rem));
             return Ok(new { rem, temp }); //CreatedAtRoute
-            return Ok(); //CreatedAtRoute
         }
         /// <summary>
         /// 修改油料订单
@@ -69,5 +69,22 @@ namespace PetroleumCore.Controllers
         {
             return Ok(await Task.Factory.StartNew(() => _oilMaterialOrderService.DeleteOilMatOrder(oilMaterialOrderDto)));
         }
+        #endregion
+
+        #region 油料审批
+        /// <summary>
+        /// 获取审批数据
+        /// </summary>
+        /// <param name="oilMaterialOrderDto"></param>
+        /// <returns></returns>
+        [HttpGet("GetOilMatOrdershenpi")]
+        public async Task<ActionResult<IEnumerable<OilMaterialOrderDto>>> GetOilMatOrdershenpi([FromQuery]responseInfo responseInfo, [FromQuery]int jobId)
+        {
+            int total = 0;
+            var temp = await Task.Factory.StartNew(() => _oilMaterialOrderService.GetyouliaoshenpiInfo(responseInfo.pageInfo, responseInfo.pageSize, jobId, ref total));
+            return Ok(new { total, temp }); //CreatedAtRoute
+        }
+
+        #endregion
     }
 }

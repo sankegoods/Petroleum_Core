@@ -24,7 +24,7 @@ namespace Repository
         public DbSet<ProcessItem> ProcessItem { get; set; }
         public DbSet<ProcessStepRecord> ProcessStepRecord { get; set; }
         public DbSet<Role> Role { get; set; }
-        public DbSet<RoleAction> RoleAction { get; set; }
+        public DbSet<JobAction> RoleAction { get; set; }
         public DbSet<RoleResourceModule> RoleResourceModule { get; set; }
         public DbSet<Staff> Staff { get; set; }
         public DbSet<StaffRole> StaffRole { get; set; }

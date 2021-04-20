@@ -17,19 +17,23 @@ namespace PetroleumService.Service
         private readonly IOilMaterialOrderResposit _oilMaterialOrderResposit;
         private readonly IOilMaterialOrderDetailResposit _oilMaterialOrderDetailResposit;
         private readonly IStaffResposit _staffResposit;
+        private readonly IProcessStepRecordResposit _processStepRecordResposit;
 
         public OilMaterialOrderService(
             IOilMaterialOrderResposit oilMaterialOrderService,
             IOilMaterialOrderDetailResposit oilMaterialOrderDetailResposit,
-            IStaffResposit staffResposit
+            IStaffResposit staffResposit,
+            IProcessStepRecordResposit processStepRecordResposit
             )
         {
             _oilMaterialOrderResposit = oilMaterialOrderService ?? throw new ArgumentNullException(nameof(oilMaterialOrderService));
             _oilMaterialOrderDetailResposit = oilMaterialOrderDetailResposit ?? throw new ArgumentNullException(nameof(oilMaterialOrderDetailResposit));
             _staffResposit = staffResposit ?? throw new ArgumentNullException(nameof(staffResposit));
+            _processStepRecordResposit = processStepRecordResposit ?? throw new ArgumentNullException(nameof(processStepRecordResposit));
         }
         #endregion
 
+        #region 油料申请
         /// <summary>
         /// 获取油料订单
         /// </summary>
@@ -40,7 +44,7 @@ namespace PetroleumService.Service
                                               join detail in _oilMaterialOrderDetailResposit.FindAll()
                                               on oredr.Id equals detail.OrderId
                                               join user in _staffResposit.FindAll()
-                                              on oredr.ApplyPersonId equals user.Name
+                                              on oredr.StaffNoN equals user.NoN
                                               select new OilMaterialOrderDto
                                               {
                                                   Id = oredr.Id,
@@ -48,7 +52,7 @@ namespace PetroleumService.Service
                                                   IsPanke = oredr.IsPanke,
                                                   NoN = oredr.NoN,
                                                   ApplyDate = oredr.ApplyDate,
-                                                  ApplyPersonId = oredr.ApplyPersonId,
+                                                  StaffNoN = oredr.StaffNoN,
                                                   stfName = user.Name,
                                                   CreateTime = oredr.CreateTime,
                                                   Remark = oredr.Remark,
@@ -69,7 +73,7 @@ namespace PetroleumService.Service
         /// <returns></returns>
         public bool UpdateOilMatOrder(OilMaterialOrderDto oilMaterialOrderDto)
         {
-            if (_staffResposit.FindAll().Where(x => x.Name == oilMaterialOrderDto.ApplyPersonId).FirstOrDefault() == null)
+            if (_staffResposit.FindAll().Where(x => x.Name == oilMaterialOrderDto.StaffNoN).FirstOrDefault() == null)
             {
                 return false;
             }
@@ -85,7 +89,7 @@ namespace PetroleumService.Service
             }, it => it.Id == oilMaterialOrderDto.DetailID);
             int Order = _oilMaterialOrderResposit.UpdateInfo(x => new OilMaterialOrder
             {
-                ApplyPersonId = oilMaterialOrderDto.ApplyPersonId,
+                StaffNoN = oilMaterialOrderDto.StaffNoN,
                 UpdateTime = DateTime.Now,
                 Remark = oilMaterialOrderDto.Remark
 
@@ -125,19 +129,19 @@ namespace PetroleumService.Service
         /// <returns></returns>
         public bool AddOilMatOrder(OilMaterialOrderDto oilMaterialOrderDto, ref string rem)
         {
-            Staff staff = _staffResposit.FindAll().Where(x => x.Name == oilMaterialOrderDto.ApplyPersonId).FirstOrDefault();
+            Staff staff = _staffResposit.FindAll().Where(x => x.NoN == oilMaterialOrderDto.StaffNoN).FirstOrDefault();
             if (staff == null)
             {
                 rem = "未找到这个用户！！！";
                 return false;
             }
             int num = 0;
-            _oilMaterialOrderResposit.StatrAffair(() =>
+            //开启事务
+            _oilMaterialOrderResposit.StatrAffairs(() =>
             {
-
                 int OrderId = _oilMaterialOrderResposit.AddCreateInfo(new OilMaterialOrder
                 {
-                    ApplyPersonId = oilMaterialOrderDto.ApplyPersonId,
+                    StaffNoN = oilMaterialOrderDto.StaffNoN,
                     NoN = GetTime.GetTimeAll() + GetTime.GetTimeStamp() + "_" + GetTime.GetRandom(),
                     ApplyDate = DateTime.Now,
                     Remark = oilMaterialOrderDto.Remark,
@@ -146,7 +150,6 @@ namespace PetroleumService.Service
                     IsPanke = 0,
                     IsLaunch = 0
                 });
-
                 _oilMaterialOrderDetailResposit.AddInfo(new OilMaterialOrderDetail
                 {
                     OrderId = OrderId,
@@ -158,9 +161,212 @@ namespace PetroleumService.Service
                     Surplus = oilMaterialOrderDto.Surplus,
                     Volume = oilMaterialOrderDto.Volume
                 });
+
+                ProcessStepRecord processStepRecord = new ProcessStepRecord();
+
+                //根据申请油料的多少决定有谁来审批
+                if (oilMaterialOrderDto.NeedAmount <= 1000)
+                {
+                    processStepRecord.OilStation = 1;
+                }
+                else if (oilMaterialOrderDto.NeedAmount > 1000 && oilMaterialOrderDto.NeedAmount <= 10000)
+                {
+                    processStepRecord.GeneralManagerOfPerson = 1;
+                }
+                else if (oilMaterialOrderDto.NeedAmount > 10000 && oilMaterialOrderDto.NeedAmount <= 50000)
+                {
+                    processStepRecord.GeneralManagerOfPerson = 1;
+                    processStepRecord.GeneralManager = 1;
+                }
+                else if (oilMaterialOrderDto.NeedAmount > 50000)
+                {
+                    processStepRecord.ChiefInspector = 1;
+                }
+
+                processStepRecord.Typed = ProcessType.油料申请审批流程.ToString();
+                processStepRecord.RecordRemarks = oilMaterialOrderDto.Remark;
+                processStepRecord.NoN = NewNoN();
+                processStepRecord.RefOrderId = OrderId; //申请油料订单的id
+                _processStepRecordResposit.AddInfo(processStepRecord);
+                num++;
             });
-            num++;
             return num > 0;
         }
+
+        public string NewNoN()
+        {
+            bool isok = true;
+            string non = "";
+            while (isok)
+            {
+                non = GetTime.randomPwd() + GetTime.randomPwd() + GetTime.randomPwd();
+                var list = (from pr in _processStepRecordResposit.FindAll()
+                            where non == pr.NoN
+                            select new { }).ToList();
+                if (list.Count == 0)
+                {
+                    isok = false;
+                }
+
+            }
+            return non;
+        }
+        #endregion
+
+
+        #region 油料审批
+        /// <summary>
+        /// 获取油料审批数据
+        /// </summary>
+        /// <returns></returns>
+        public List<object> GetyouliaoshenpiInfo(int pageIndex, int pageSize, int jobId, ref int totalCount)
+        {
+            if((int)JobEmun.油站经理 == jobId)
+            {
+               return _oilMaterialOrderResposit.GetListyouliaoInfo(pageIndex, pageSize, (p, oi, oid, st) =>
+                      p.Typed == ProcessType.油料申请审批流程.ToString() &&
+                     p.OilStation == 1 && p.GeneralManagerOfPerson == null
+                   ,ref totalCount);
+            }
+            else if((int)JobEmun.主管 == jobId)
+            {
+                return _oilMaterialOrderResposit.GetListyouliaoInfo(pageIndex, pageSize, (p, oi, oid, st) =>
+                      p.Typed == ProcessType.油料申请审批流程.ToString() &&
+                      p.GeneralManagerOfPerson == 1 && p.GeneralManager == 1
+                   , ref totalCount);
+            }
+            else if((int)JobEmun.总经理 == jobId)
+            {
+                return _oilMaterialOrderResposit.GetListyouliaoInfo(pageIndex, pageSize, (p, oi, oid, st) =>
+                      p.Typed == ProcessType.油料申请审批流程.ToString() &&
+                      p.GeneralManagerOfPerson == 0 && p.GeneralManager == 1 && p.ChiefInspector == null
+                   , ref totalCount);
+            }
+            else if((int)JobEmun.总监 == jobId)
+            {
+                return _oilMaterialOrderResposit.GetListyouliaoInfo(pageIndex, pageSize, (p, oi, oid, st) =>
+                      p.Typed == ProcessType.油料申请审批流程.ToString() &&
+                      p.GeneralManager == null && p.ChiefInspector == 1
+                   , ref totalCount);
+            }
+            return null;
+        }
+
+        public List<object> GetListyouliaoInfo(int pageIndex, int pageSize, ref int totalCount)
+        {
+            List<object> list = new List<object>();
+            var temp = (from oi in _oilMaterialOrderResposit.FindPageAll(pageIndex, pageSize, ref totalCount)
+                        select new
+                        {
+
+                        }).ToList();
+            list.Add(temp);
+            return list;
+        }
+
+        /// <summary>
+        /// 审批确定油料申请数据
+        /// </summary>
+        /// <returns></returns>
+        public string UpdateyouliaoInfo(string remack,int oilmId, int jobId)
+        {
+            string rutes = string.Empty;
+            _processStepRecordResposit.StatrAffair(() =>
+            {
+                ProcessStepRecord processStepRecord = new ProcessStepRecord();
+                ProcessStepRecord processStep = _processStepRecordResposit.FindAll().FirstOrDefault(x => x.RefOrderId == oilmId);
+                OilMaterialOrder oilMaterialOrder = _oilMaterialOrderResposit.FindAll().FirstOrDefault(x => x.Id == oilmId);
+                oilMaterialOrder.UpdateTime = DateTime.Now;
+                OilMaterialOrderDetail oilMaterialOrderDetail = _oilMaterialOrderDetailResposit.FindAll().FirstOrDefault(x => x.OrderId == oilmId);
+                oilMaterialOrderDetail.UpdateTime = DateTime.Now;
+                if ((int)JobEmun.油站经理 == jobId)
+                {
+                    if (remack == "同意")
+                    {
+                        processStep.OilStation = 0;
+                        processStep.OilStationRemark = remack;
+                        processStep.Result = 2;
+                    }
+                    else
+                    {
+                        processStep.OilStation = 2; //不同意该申请
+                        processStep.OilStationRemark = remack;
+                        processStep.Result = 3;
+                    }
+                }
+                else if ((int)JobEmun.主管 == jobId)
+                {
+                    if (remack == "同意")
+                    {
+                        processStep.GeneralManagerOfPerson = 0;
+                        processStep.GeneralManagerOfPersonRemark = remack;
+                        processStep.Result = 2;
+                    }
+                    else
+                    {
+                        processStep.GeneralManagerOfPerson = 2; //不同意该申请
+                        processStep.GeneralManagerOfPersonRemark = remack;
+                        processStep.Result = 3;
+                    }
+                }
+                else if ((int)JobEmun.总经理 == jobId)
+                {
+                    if (remack == "同意")
+                    {
+                        processStep.GeneralManager = 0;
+                        processStep.GeneralManagerRemark = remack;
+                        processStep.Result = 2;
+                    }
+                    else
+                    {
+                        processStep.GeneralManager = 2; //不同意该申请
+                        processStep.GeneralManagerRemark = remack;
+                        processStep.Result = 3;
+                    }
+                }
+                else if ((int)JobEmun.总监 == jobId)
+                {
+                    if (remack == "同意")
+                    {
+                        processStep.ChiefInspector = 0;
+                        processStep.ChiefInspectorRemark = remack;
+                        processStep.Result = 2;
+                    }
+                    else
+                    {
+                        processStep.ChiefInspector = 2; //不同意该申请
+                        processStep.ChiefInspectorRemark = remack;
+                        processStep.Result = 3;
+                    }
+                }
+                _processStepRecordResposit.UpdateInfo((x) => new ProcessStepRecord
+                {
+                    OilStation = processStep.OilStation,
+                    OilStationRemark = processStep.OilStationRemark,
+                    GeneralManagerOfPersonRemark = processStep.GeneralManagerOfPersonRemark,
+                    GeneralManagerOfPerson = processStep.GeneralManagerOfPerson,
+                    GeneralManager = processStep.GeneralManager,
+                    GeneralManagerRemark = processStep.GeneralManagerRemark,
+                    ChiefInspector = processStep.ChiefInspector,
+                    ChiefInspectorRemark = processStep.ChiefInspectorRemark,
+                    Result = processStep.Result
+                }, x => x.Id == processStep.Id);
+
+                _oilMaterialOrderDetailResposit.UpdateInfo((x) => new OilMaterialOrderDetail
+                {
+                    UpdateTime = oilMaterialOrderDetail.UpdateTime
+                }, x => x.Id == oilMaterialOrderDetail.Id);
+
+                _oilMaterialOrderResposit.UpdateInfo((x) => new OilMaterialOrder
+                {
+                    UpdateTime = oilMaterialOrder.UpdateTime
+                }, x => x.Id == oilMaterialOrderDetail.Id);
+
+                rutes = "ok";
+            });
+            return rutes;
+            
+        }
+        #endregion
     }
 }

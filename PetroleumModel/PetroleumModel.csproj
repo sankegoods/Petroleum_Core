@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="sqlSugar" Version="5.0.0.15" />
   </ItemGroup>
 

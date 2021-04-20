@@ -13,7 +13,7 @@ namespace PetroleumModel.Model
         #region Model
         private int _id;
         private string _non;
-        private string _applypersonid;
+        private string _staffNoN;
         private DateTime _applydate;
         private string _remark;
         private int _isdel;
@@ -41,10 +41,10 @@ namespace PetroleumModel.Model
         /// <summary>
         /// 
         /// </summary>
-        public string ApplyPersonId
+        public string StaffNoN
         {
-            set { _applypersonid = value; }
-            get { return _applypersonid; }
+            set { _staffNoN = value; }
+            get { return _staffNoN; }
         }
         /// <summary>
         /// 

@@ -1,34 +1,36 @@
-﻿using System;
+﻿using SqlSugar;
+using System;
 namespace PetroleumModel.Model
 {
 	/// <summary>
 	/// RoleAction:实体类(属性说明自动提取数据库字段的描述信息)
 	/// </summary>
 	[Serializable]
-	public partial class RoleAction
+	public partial class JobAction
 	{
-		public RoleAction()
+		public JobAction()
 		{}
 		#region Model
-		private int _roleactionid;
-		private int? _roleid;
+		private int _jobactionid;
+		private int? _jobid;
 		private int _actionid;
 		private string _isdelete;
 		/// <summary>
 		/// 
 		/// </summary>
-		public int RoleActionID
+		[SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
+		public int JobActionID
 		{
-			set{ _roleactionid=value;}
-			get{return _roleactionid;}
+			set{ _jobactionid = value;}
+			get{return _jobactionid; }
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? RoleId
+		public int? JobId
 		{
-			set{ _roleid=value;}
-			get{return _roleid;}
+			set{ _jobid = value;}
+			get{return _jobid; }
 		}
 		/// <summary>
 		/// 

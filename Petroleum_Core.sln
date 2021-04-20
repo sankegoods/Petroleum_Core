@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Re
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetroleumModel", "PetroleumModel\PetroleumModel.csproj", "{0DA7FD97-61C0-4BFA-8C9F-3FAF02D44E49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceExt", "ServiceExt\ServiceExt.csproj", "{45BDDCC3-881B-4204-A1AE-5A60C4034653}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceExt", "ServiceExt\ServiceExt.csproj", "{45BDDCC3-881B-4204-A1AE-5A60C4034653}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetroleumService", "PetroleumService\PetroleumService.csproj", "{FCAEB96B-F6F8-4578-A739-FFF231B81B2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetroleumService", "PetroleumService\PetroleumService.csproj", "{FCAEB96B-F6F8-4578-A739-FFF231B81B2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

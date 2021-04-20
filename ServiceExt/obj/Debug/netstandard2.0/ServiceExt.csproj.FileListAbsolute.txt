@@ -10,8 +10,8 @@ C:\Users\Administrator\Desktop\vue\后端\Petroleum_Core\ServiceExt\obj\Debug\ne
 C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\ServiceExt\bin\Debug\netstandard2.0\ServiceExt.deps.json
 C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\ServiceExt\bin\Debug\netstandard2.0\ServiceExt.dll
 C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\ServiceExt\bin\Debug\netstandard2.0\ServiceExt.pdb
-C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\ServiceExt\obj\Debug\netstandard2.0\ServiceExt.csprojAssemblyReference.cache
 C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\ServiceExt\obj\Debug\netstandard2.0\ServiceExt.AssemblyInfoInputs.cache
 C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\ServiceExt\obj\Debug\netstandard2.0\ServiceExt.AssemblyInfo.cs
 C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\ServiceExt\obj\Debug\netstandard2.0\ServiceExt.dll
 C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\ServiceExt\obj\Debug\netstandard2.0\ServiceExt.pdb
+C:\Users\95329\Desktop\石油项目翻新\Petroleum_Core\ServiceExt\obj\Debug\netstandard2.0\ServiceExt.csprojAssemblyReference.cache

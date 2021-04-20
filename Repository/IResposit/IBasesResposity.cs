@@ -23,7 +23,9 @@ namespace Repository.IResposit
         /// <param name="totalCount"></param>
         /// <param name="orderBy"></param>
         /// <returns></returns>
-        IEnumerable<T> FindPageAll(Expression<Func<T, bool>> predicate, int pageIndex, int pageSize, ref int totalCount, string orderBy = "");
+        IEnumerable<T> FindPageAll(int pageIndex, int pageSize, ref int totalCount, string orderBy = "");
+
+        SqlSugarClient FindPageLianbiao();
 
         /// <summary>
         /// 根据条件查询数据 是否分组
@@ -33,7 +35,20 @@ namespace Repository.IResposit
         /// <returns></returns>
         IEnumerable<T> FindListByClause(Expression<Func<T, bool>> predicate, string orderBy = "");
         ISugarQueryable<T> GetAll();
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="predicate1"></param>
+        /// <returns></returns>
         int UpdateInfo(Expression<Func<T, T>> predicate, Expression<Func<T, bool>> predicate1);
+        /// <summary>
+        /// 修改（批量）
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="predicate1"></param>
+        /// <returns></returns>
+        int Updateable(List<T> list, Expression<Func<T, T>> predicate);
 
         /// <summary>
         /// 单个删除
@@ -47,6 +62,8 @@ namespace Repository.IResposit
         /// </summary>
         /// <param name="action"></param>
         void StatrAffair(Action action);
+
+        void StatrAffairs(Action action);
 
         /// <summary>
         /// 添加数据(返回受影响行数)

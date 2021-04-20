@@ -12,21 +12,32 @@ namespace PetroleumService.Service
     public class ActionsService : BasesService<Actions>, IActionsService
     {
         private readonly IActionsResposit _actionsService;
+        private readonly IStaffResposit _staffResposit;
+        private readonly IJobresposit _jobresposit;
+        private readonly IJobactionResposit _jobactionResposit;
 
-        public ActionsService(IActionsResposit actionsService)
+        public ActionsService(IActionsResposit actionsService, IStaffResposit staffResposit, IJobresposit jobresposit,IJobactionResposit jobactionResposit)
         {
             _baseRepository = actionsService;
-            _actionsService = actionsService;
+            _actionsService = actionsService ?? throw new ArgumentNullException(nameof(actionsService));
+            _staffResposit = staffResposit ?? throw new ArgumentNullException(nameof(staffResposit));
+            _jobresposit = jobresposit ?? throw new ArgumentNullException(nameof(jobresposit));
+            _jobactionResposit = jobactionResposit ?? throw new ArgumentNullException(nameof(jobactionResposit));
         }
 
-        public object MenusInfoAll()
+
+        public object MenusInfoAll(int jobId)
         {
+            //主菜单查询
             var temp = (from m in _actionsService.FindAll()
                         where m.NonMenu == 2
                         select m).ToList();
 
+            //子菜单查询
             var temp1 = (from m in _actionsService.FindAll()
-                         where m.NonMenu == 1
+                         join j in _jobactionResposit.FindAll()
+                         on m.Id equals j.ActionId
+                         where m.NonMenu == 1 && j.JobId == jobId
                          orderby m.Mnusort
                          select m).ToList();
 
@@ -45,6 +56,33 @@ namespace PetroleumService.Service
             }
 
             return list;
+        }
+
+        /// <summary>
+        /// 用户登陆
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <param name="Passwords"></param>
+        /// <returns></returns>
+        public object GetLogInfo(string Name, string Passwords)
+        {
+            Staff Info = _staffResposit.FindAll().FirstOrDefault(x => x.NoN == Name);
+            if (Info != null)
+            {
+                if (Info.Passwords == Passwords)
+                {
+                    Job job = _jobresposit.FindAll().FirstOrDefault(x => x.Id == Info.JobId);
+                    return new { Info, job };
+                }
+                else
+                {
+                    return "密码错误！！";
+                }
+            }
+            else
+            {
+                return "该用户不存在！！";
+            }
         }
     }
 }
